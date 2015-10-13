@@ -4,17 +4,20 @@ package com.elegion.githubclient.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.widget.Toast;
 
 import com.elegion.githubclient.AppDelegate;
+import com.elegion.githubclient.AuthMistakeDialog;
+import com.elegion.githubclient.model.LogInterface;
 import com.elegion.githubclient.utils.ActivityBuilder;
 
 /**
  * @author Artem Mochalov.
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements LogInterface {
 
     private Toast mToast;
 
@@ -52,5 +55,14 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             CookieManager.getInstance().removeAllCookies(null);
         }
+    }
+
+    @Override
+    public void auth() {
+        logout();
+    }
+
+    protected void showDialog() {
+        new AuthMistakeDialog().show(getFragmentManager(), null);
     }
 }

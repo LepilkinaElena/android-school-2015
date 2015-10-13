@@ -117,7 +117,7 @@ public class LoginActivity extends BaseActivity {
                         .executePost();
 
                 if (responseObject.optInt(ApiClient.STATUS_CODE) != ApiClient.STATUS_CODE_OK) {
-                    //TODO: handle error
+                    return false;
                 }
 
                 String accessToken = responseObject.optString(ACCESS_TOKEN_RESPONSE_KEY);
@@ -142,7 +142,7 @@ public class LoginActivity extends BaseActivity {
             if (success) {
                 startActivity(UserActivity.class, true);
             } else {
-                showSingleToast(SOME_ERROR);
+                showDialog();
             }
         }
     }

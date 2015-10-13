@@ -102,7 +102,7 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
                 int statusCode = responseObject.optInt(ApiClient.STATUS_CODE);
 
                 if (statusCode != ApiClient.STATUS_CODE_OK) {
-                    //TODO: handle error
+                    return null;
                 } else {
                     String userName = responseObject.optString("login");
                     String userAvatar = responseObject.optString("avatar_url");
@@ -125,6 +125,8 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
                         .load(user.getAvatarUrl())
                         .into(mUserAvatar);
                 mRepositoriesButton.setEnabled(true);
+            } else {
+                showDialog();
             }
         }
     }

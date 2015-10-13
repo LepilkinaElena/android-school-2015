@@ -6,4 +6,7 @@
     <string name="logout">Выйти</string>
     <string name="ab_my_repositories">Мои репозитории</string>
     <string name="ab_my_profile">Мой профиль</string>
+    <string name="dialog_title">Ошибка при авторизации</string>
+    <string name="dialog_message">К сожалению, потеряна связь с GitHub. Пожалуйста, попробуйте авторизоваться еще раз.</string>
+    <string name="button">OK</string>
 </resources>

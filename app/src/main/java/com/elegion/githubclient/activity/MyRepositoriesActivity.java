@@ -72,7 +72,7 @@ public class MyRepositoriesActivity extends BaseActivity {
                         .executeGet();
 
                 if (responseObject.optInt(ApiClient.STATUS_CODE) != ApiClient.STATUS_CODE_OK) {
-                    //TODO: handle error
+                    return null;
                 }
 
                 JSONArray array = (JSONArray)responseObject.get(ApiClient.LIST_DATA_KEY);
@@ -93,7 +93,11 @@ public class MyRepositoriesActivity extends BaseActivity {
 
         @Override
         protected void onPostExecute(List<Repository> repositories) {
-            ((RepositoriesAdapter)mRepositoryList.getAdapter()).addAll(repositories);
+            if (repositories != null) {
+                ((RepositoriesAdapter) mRepositoryList.getAdapter()).addAll(repositories);
+            } else {
+                showDialog();
+            }
         }
     }
 }
