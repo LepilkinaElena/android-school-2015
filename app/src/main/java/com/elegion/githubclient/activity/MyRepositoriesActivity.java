@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.elegion.githubclient.R;
+import com.elegion.githubclient.RepItemDecoration;
 import com.elegion.githubclient.adapter.RepositoriesAdapter;
 import com.elegion.githubclient.api.ApiClient;
 import com.elegion.githubclient.model.Repository;
@@ -36,6 +37,7 @@ public class MyRepositoriesActivity extends BaseActivity {
         mRepositoryList = (RecyclerView) findViewById(R.id.repositories_list);
         mRepositoryList.setLayoutManager(new LinearLayoutManager(this));
         mRepositoryList.setAdapter(new RepositoriesAdapter());
+        mRepositoryList.addItemDecoration(new RepItemDecoration());
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
